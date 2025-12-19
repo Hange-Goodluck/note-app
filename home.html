@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Notes App{% endblock %}
+{% block content %}
+<h1 align="center">Notes</h1>
+<ul class="list-group list-group-flush" id="notes">
+	{% for note in notes %}
+	<li id="note-{{ note.id }}" class="list-group-item d-flex justify-content-between align-items-center">
+		{{ note.data }}
+		<div>
+			<button class="btn btn-danger btn-sm" onclick="deletenote({{ note.id }})">Delete</button>
+		</div>
+	</li>
+	{% else %}
+	<li class="list-group-item">No notes yet. Add a note below!</li>
+	{% endfor %}
+</ul>
+<form action="" method="POST" class="mb-4">
+	<div class="input-group">
+
+		<textarea name="note" id="note" placeholder="write your notes here" style="height: 250px;width: 500px;"></textarea>
+<div><button class="btn btn-primary" type="submit">Add Note</button></div>
+		
+	</div>
+</form>
+
+{% endblock %}
